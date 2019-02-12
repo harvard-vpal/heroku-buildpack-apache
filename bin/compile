@@ -45,7 +45,7 @@ export_env_dir $ENV_DIR
 
 CACHED_APACHE_VERSION=$(cat $CACHE_DIR/apache/.apache-version 2>/dev/null || true)
 CACHED_MOD_CAS_VERSION=$(cat $CACHE_DIR/apache/.mod_cas-version 2>/dev/null || true)
-MOD_CAS_VERSION="1.1"
+MOD_CAS_VERSION="1.2-RC2"
 
 if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" ] || [ "$CACHED_MOD_CAS_VERSION" != "$MOD_CAS_VERSION" ]; then
 	info "Apache version changed since last build; old: $CACHED_APACHE_VERSION -> new: $APACHE_VERSION"
@@ -82,7 +82,7 @@ if [ "$CACHED_APACHE_VERSION" != "$APACHE_VERSION" ] || [ "$CACHED_MOD_CAS_VERSI
 	#
 	cd "$BUILD_DIR"
 	info "Downloading mod_cas $MOD_CAS_VERSION"
-	curl -L https://github.com/apereo/mod_auth_cas/archive/v1.1.tar.gz | tar xz
+	curl -L https://github.com/apereo/mod_auth_cas/archive/v1.2-RC2.tar.gz | tar xz
 	cd "mod_auth_cas-${MOD_CAS_VERSION}"
 	head "Configuring mod_cas $MOD_CAS_VERSION"
 	autoreconf -ivf 2>&1|indent
